@@ -1,11 +1,11 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
+# Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
+# load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
@@ -70,24 +70,15 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git
-         zsh-autosuggestions # autocomplete suggestions based on history
-         zsh-syntax-highlighting
-         sudo # double hit the esc key to add sudo to the beginning of the line
-         web-search # search google from the command line
-         copyfile # copy the current file to the clipboard
-         copybuffer # copy the current buffer to the clipboard with Ctrl+O
-         dirhistory # navigate into directory history with ALt+[left|right|up]
-         jsontools # nice json formatting
-         python # python commands
-         bundler # ruby bundler
-         ruby # ruby commands
-         rbenv # ruby environment
-         docker # docker commands
-         docker-compose # docker compose commands
-         tmux # tmux commands
-        )
-
+plugins=(git                           # git aliases
+         docker                        # docker aliases
+         docker-compose                # docker-compose aliases
+         tmux                          # tmux aliases
+         sudo                          # ESC twice to sudo
+         extract                       # extract any archive with "extract <file>"
+         zsh-autosuggestions           # fish-like autosuggestions
+         zsh-syntax-highlighting       # syntax highlighting
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -102,58 +93,24 @@ source $ZSH/oh-my-zsh.sh
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='nvim'
 # fi
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+# export ARCHFLAGS="-arch $(uname -m)"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# Set personal aliases, overriding those provided by Oh My Zsh libs,
+# plugins, and themes. Aliases can be placed here, though Oh My Zsh
+# users are encouraged to define aliases within a top-level file in
+# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
+# - $ZSH_CUSTOM/aliases.zsh
+# - $ZSH_CUSTOM/macos.zsh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/givasile/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/givasile/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/givasile/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/givasile/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-# nvm add to path
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# rbenv
-eval "$(~/.rbenv/bin/rbenv init - zsh)"
-
-export PATH=/usr/local/cuda-11.8/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/local/cuda-11.8/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-
-# Created by `pipx` on 2024-10-26 11:33:01
-export PATH="$PATH:/home/givasile/.local/bin"
-
-# >>> juliaup initialize >>>
-
-# !! Contents within this block are managed by juliaup !!
-
-path=('/home/givasile/.juliaup/bin' $path)
-export PATH
-
-# <<< juliaup initialize <<<
-
-# GitHub Copilot CLI
-eval "$(gh copilot alias -- zsh)"
