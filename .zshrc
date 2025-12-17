@@ -84,6 +84,13 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# emacs mode
+bindkey -e
+
+# emacs aliases
+alias et="emacsclient -nw -a ''"            # in-terminal emacs
+alias ekill="emacsclient -e '(kill-emacs)'" # kill emacs server
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
